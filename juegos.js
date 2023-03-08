@@ -7,17 +7,27 @@ let cant = 0;
 
 // validacion
 
+function pedirNumeroValido(){
+    do{
+        alert ("Ingresá un número válido");
+        cant = parseInt(prompt("Elegí la cantidad"));
+    }while (isNaN(cant));
+
+}
+
 function validar (){
     if (cant >0 && cant <100){
-        cant == cant *1
+        return cant;
     }
     else {
-        do{
-            alert ("Ingresá un número válido");
-            cant = parseInt(prompt("Elegí la cantidad"));
-        }while (isNaN(cant));   
-
+        pedirNumeroValido();
     }
+}
+
+function sumaDeSaldo(){
+    saldo = cant*1000;  
+    nuevoSaldo = nuevoSaldo + saldo;
+    
 }
 
 while (eleccion !="Ninguno" && eleccion != "ninguno") {
@@ -27,12 +37,11 @@ while (eleccion !="Ninguno" && eleccion != "ninguno") {
         if (confirma == "Si" || confirma == "si"){
             cant = parseInt(prompt("Elegí la cantidad"));
             validar(cant);
-            saldo = cant*1000;  
-            nuevoSaldo = nuevoSaldo + saldo      
-            alert ("Tu saldo es de " + nuevoSaldo)
+            sumaDeSaldo(); 
+            alert ("Tu saldo es de " + nuevoSaldo);
            
         }
-        else if (confirma = "no"){
+        else if (confirma == "no"){
             alert ("volverás al menú anterior");
         }
     }
@@ -41,11 +50,10 @@ while (eleccion !="Ninguno" && eleccion != "ninguno") {
         if (confirma == "Si" || confirma == "si"){
             cant = parseInt(prompt("Elegí la cantidad"));
             validar(cant);
-            saldo = cant*2000;  
-            nuevoSaldo = nuevoSaldo + saldo      
+            sumaDeSaldo();  
             alert ("Tu saldo es de " + nuevoSaldo);
         }
-        else if (confirma = "no"){
+        else if (confirma == "no"){
             alert ("volverás al menú anterior");
         }
     }
@@ -54,11 +62,10 @@ while (eleccion !="Ninguno" && eleccion != "ninguno") {
         if (confirma == "Si" || confirma == "si"){
             cant = parseInt(prompt("Elegí la cantidad"));
             validar(cant);
-            saldo = cant*3000;  
-            nuevoSaldo = nuevoSaldo + saldo      
+            sumaDeSaldo();    
             alert ("Tu saldo es de " + nuevoSaldo);
         }
-        else if (confirma = "no"){
+        else if (confirma == "no"){
             alert ("volverás al menú anterior");
         }
         
