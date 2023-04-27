@@ -56,6 +56,10 @@ h1{
     height: 800px;
   }
 
+  .container-fluid-card{
+    display: flex;
+  }
+
  
    .btn-gradient-2{
     margin-top: 40px;
@@ -103,7 +107,7 @@ h1{
 
 
 
-  @media only screen and (max-width: 575px){
+  @media only screen and (max-width: 800px){
 
     h1{
       margin-top: -30px;
@@ -113,30 +117,20 @@ h1{
       font-size: 30px;
   
     }
-    .imagen{
-      height: 280px;
-      margin-left: 0px;
-    }
-
-    .imagen2{
-      margin-top: 10px;
-      height: 500px;
-      margin-left: 0px;
-    }
-
-    .imagen3{
-      height: 400px;
-      margin-left: 0px;
-    }
+    
     .container-fluid-negro{
       margin-top: 100px;
       background-color: black;
-      height: 500px;
+      height: auto;
   }
 
   .container-fluid-negro2{
     margin-top: 10px;
     background-color: black;
     height: 700px;
+  }
+
+  .container-fluid-card{
+    flex-wrap: wrap;
   }
 }
