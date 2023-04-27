@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Signika+Negative:wght@300;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Signika Negative", sans-serif;
+}
+
+.navbar {
+  background-color: black !important;
+}
+
+.divisor {
+  background-image: url(../img/barra.svg);
+  height: 300px;
+  width: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: -90px;
+  margin-top: -150px;
+}
+
+h1 {
+  margin-top: -60px;
+  font-family: "Signika Negative", sans-serif;
+  font-weight: 700;
+  color: #EB7428;
+  font-size: 70px;
+  text-align: center;
+  text-transform: uppercase;
+  animation-name: h1cambiodecolor;
+  animation-duration: 10s;
+  animation-delay: 0;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes h1cambiodecolor {
+  25% {
+    color: #ED897D;
+  }
+  50% {
+    color: #4f4c49;
+  }
+  75% {
+    color: cadetblue;
+  }
+}
+h2 {
+  font-size: 50px;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+span {
+  font-weight: 700;
+}
+
+.container-fluid-negro {
+  margin-top: 60px;
+  background-color: black;
+  height: 800px;
+}
+
+.btn-gradient-2 {
+  margin-top: 40px;
+  font-weight: 700;
+  width: 300px;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+  padding: 10px;
+  background: linear-gradient(black, black) padding-box, linear-gradient(to right, darkblue, darkorchid) border-box;
+  border-radius: 60px;
+  border: 6px solid transparent;
+  border-spacing: 10px;
+}
+
+.row-txt {
+  color: white;
+  margin-top: 20px;
+}
+
+.card {
+  transition: all 0.3s;
+  gap: 15px;
+  margin: 10px;
+  margin-top: 40px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background-color: #eabeb9;
+}
+
+.card-title1 {
+  margin-top: -30px;
+  font-weight: bold;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 575px) {
+  h1 {
+    margin-top: -30px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .imagen {
+    height: 280px;
+    margin-left: 0px;
+  }
+  .imagen2 {
+    margin-top: 10px;
+    height: 500px;
+    margin-left: 0px;
+  }
+  .imagen3 {
+    height: 400px;
+    margin-left: 0px;
+  }
+  .container-fluid-negro {
+    margin-top: 100px;
+    background-color: black;
+    height: 500px;
+  }
+  .container-fluid-negro2 {
+    margin-top: 10px;
+    background-color: black;
+    height: 700px;
+  }
+}
+footer {
+  background-color: rgb(0, 0, 0);
+  margin-bottom: -100px;
+  margin-top: 30px;
+}
+
+.iconos {
+  display: flex;
+  font-size: 30px;
+  height: 50%;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.iconos a {
+  color: white;
+}
+
+.bi-facebook:hover {
+  color: cornflowerblue;
+}
+
+.bi-whatsapp:hover {
+  color: chartreuse;
+}
+
+.bi-instagram:hover {
+  color: coral;
+}
+
+.textfoot {
+  text-align: center;
+  padding-top: 35px;
+}
+
+.p1 {
+  height: 80%;
+  font-size: 20px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.p2 {
+  height: 80%;
+  font-size: 30px;
+  color: cornflowerblue;
+  text-transform: uppercase;
+  margin-top: -10px;
+}
+
+@media only screen and (max-width: 575px) {
+  footer {
+    height: 160px;
+    margin-top: 10px;
+  }
+  .iconos {
+    font-size: 25px;
+    margin-top: 5px;
+  }
+}
+.contacto {
+  background-color: black !important;
+  color: white;
+  margin-bottom: -30px;
+}
+
+.btn-gradient-5 {
+  margin-top: 20px;
+  font-weight: 700;
+  width: 200px;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box, linear-gradient(to right, darkblue, darkorchid) border-box;
+  border-radius: 60px;
+  border: 6px solid transparent;
+  border-spacing: 10px;
+}
+
+.parrafo3 {
+  color: white;
+  font-size: 26px;
+  margin-top: 20px;
+  text-align: center;
+}/*# sourceMappingURL=estilo.css.map */

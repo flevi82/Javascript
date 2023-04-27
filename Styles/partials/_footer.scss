@@ -1,0 +1,71 @@
+footer {
+    background-color: rgb(0, 0, 0);
+    
+    
+    
+    margin-bottom: -100px;
+    margin-top: 30px;
+    
+    
+}
+
+.iconos { 
+    display: flex;
+    font-size: 30px;
+    height: 50%;
+    gap: 40px;
+    margin-top: 30px;
+    
+    
+  }
+
+  .iconos a{
+    color:white;
+  }
+
+  .bi-facebook:hover{
+    color:cornflowerblue;
+  }
+
+  .bi-whatsapp:hover{
+    color:chartreuse;
+  }
+
+  .bi-instagram:hover{
+    color:coral
+  }
+
+  .textfoot{
+    text-align: center;
+    padding-top: 35px;
+    
+  }
+
+  .p1{
+    height: 80%;
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+  
+}
+  .p2{
+    height: 80%;
+    font-size: 30px;
+    color:cornflowerblue;
+    text-transform: uppercase;
+    margin-top:-10px;
+  }
+
+  @media only screen and (max-width: 575px){
+    footer {
+        height: 160px;
+        margin-top: 10px;  
+   }
+
+  .iconos { 
+    font-size: 25px;
+
+    margin-top: 5px;
+}
+
+}
