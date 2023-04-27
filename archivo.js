@@ -30,6 +30,9 @@ function pedido(nombreJuego){
 
 function preguntarCantidad(){
     cantidad = parseInt(prompt("¿Cuántas unidades querés?"));
+    while (isNaN(cantidad) || cantidad < 0){
+        cantidad = parseInt(prompt("Ingrese un número válido"));
+    }
 }
 
 while (eleccion !=0){
@@ -67,4 +70,4 @@ while (eleccion !=0){
     
 }
 
-alert (`Muchas gracias por tu compra. Esta incluye ${descripcion}  y el total a pagar es ${total}`);
+alert (`Muchas gracias por tu compra. Esta incluye ${descripcion}  y el total a pagar es $${total}`);
