@@ -70,4 +70,10 @@ while (eleccion !=0){
     
 }
 
-alert (`Muchas gracias por tu compra. Esta incluye ${descripcion}  y el total a pagar es $${total}`);
+if (total > 0){
+    alert (`Muchas gracias por tu compra. Esta incluye ${descripcion}  y el total a pagar es $${total}`);
+}
+else {
+    alert ("Gracias por tu visita. Te esperamos pronto.")
+}
+
