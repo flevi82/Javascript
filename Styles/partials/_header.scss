@@ -1,5 +1,28 @@
 .navbar{
-    background-color: black !important;
+    background-color: black !important;  
+}
+
+
+#bienvenida{
+    color:white;
+    margin: 7px;
+
+}
+
+.input-group{
+    margin-top: -5px;
+}
+
+.nav-link-dropdown-toggle{
+    color: white !important;
+    margin-top: 7px;
+    margin-left: 14px;
+}
+
+
+.dropdown-menu{
+    margin-left: -350px;
+    width: 400px;
 }
 
 
@@ -11,6 +34,7 @@
     background-repeat: no-repeat;
     margin-left: -90px;
     margin-top: -150px;
+    // z-index: -5;
     
     
 }

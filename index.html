@@ -26,14 +26,31 @@
 
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    
           <ul class="navbar-nav ml-auto text-center">
+            <div id="bienvenida"></div>
+            <div id="registro"></div>
+            <form class="form-inline d-flex flex-nowrap"  id="formularioBoton">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary " type="submit" id="button-addon1" onclick="location.reload()">Buscar</button>
+              </div>
+              <input type="text" class="form-control" id="dniControl" placeholder="Ingrese su DNI XX.XXX.XXX" aria-label="Example text with button addon" aria-describedby="button-addon1" style="width:30vh;">
+          </form>
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./pages/contacto.html">Contacto</a>
             </li>
+            <li class="nav-item-carrito dropdown">
+            <a class="nav-link dropdown-toggle"  href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" id="carrito" width="20" height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 20 20">
+                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+              </svg>
+            </a>
+            <div id="verCarrito" class="dropdown-menu" style="overflow-y:auto; max-height:80vh">
+              <div id="finalizandoCompra"></div>
+            </div>
+          </li>
           </ul>
         </div>
       </nav>
@@ -65,37 +82,41 @@
             <h3>Los más vendidos.</h3>
           </div>
         </div>
-        <div class="container-fluid-card justify-content-center">
+        <div class="container-fluid-card justify-content-center" id="productos">
           <div class="card" style="width: 18rem;">
-            <img src="./img/prod1.png" class="card-img-top" alt="...">
+            <img src="./img/1.png" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title1">Set Figuras</h5>
               <div id="precio"><p>$1000</p></div>
               <p class="card-text">Ideal para el trabajo con niños de 4 a 6 años. Incluye 12 piezas de porcelana en frío.</p>
+              <button type="button" id="carri1" class="btn btn-info" style="width: 9rem;">Agregar al Carrito</button>
             </div>
         </div>
         <div class="card" style="width: 18rem;">
-          <img src="./img/prod2.png" class="card-img-top" alt="...">
+          <img src="./img/2.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">La Mudanza</h5>
             <div id="precio"><p>$2000</p></div>
             <p class="card-text">Jugá con las categorías semánticas y no olvides alimentar a tus fantasmitas. Juego de recorrido.</p>
+            <button type="button" id="carri2"class="btn btn-info" style="width: 9rem;">Agregar al Carrito</button>
           </div>
         </div>
         <div class="card" style="width: 18rem;">
-          <img src="./img/prod3.png" class="card-img-top" alt="...">
+          <img src="./img/3.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Morfosintáctico Select</h5>
             <div id="precio"><p>$3000</p></div>
             <p class="card-text">Armado de oraciones a través de selectores de impresión 3D. Para trabajar con adolescentes.</p>
+            <button type="button" id="carri3" class="btn btn-info" style="width: 9rem;">Agregar al Carrito</button>
           </div>
         </div>
         <div class="card" style="width: 18rem;">
-          <img src="./img/prod4.png" class="card-img-top" alt="...">
+          <img src="./img/4.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Kit Morfosintáctico</h5>
             <div id="precio"><p>$4000</p></div>
             <p class="card-text">3 mazos de cartas y tablero para el trabajo de morfosintaxis. Armado de oraciones, concordancia género número y más.</p>
+            <button type="button" id="carri4" class="btn btn-info" style="width: 9rem;">Agregar al Carrito</button>
           </div>
         </div>
       </div>
@@ -146,6 +167,6 @@
  <script>
     AOS.init();
  </script>
- <script src="./archivo.js"></script>
+ <script src="./main.js"></script>
 </body>
 </html>
