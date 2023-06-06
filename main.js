@@ -109,7 +109,13 @@ class Carrito{
     }
 }
 
-let carrito = []
+const verCarrito = document.getElementById('verCarrito');
+let carrito = JSON.parse(sessionStorage.getItem('chequeo'));
+if (carrito === null){
+  carrito = [];
+}else{
+  actualizarCarrito();
+}
 
 const agregarAlCarrito = (id) => {
   const producto = productos.find((prod) => prod.id === id);
@@ -120,12 +126,12 @@ const agregarAlCarrito = (id) => {
       carrito.push(producto);
     }
   actualizarCarrito();
+  calcularTotalCompra();
   sessionStorage.setItem("chequeo",JSON.stringify(carrito))
-  carritoCompleto = carrito;
   };
 
  
-const verCarrito = document.getElementById('verCarrito');
+
 
 function actualizarCarrito() {
   
@@ -146,7 +152,7 @@ function actualizarCarrito() {
             </div>
           </div>`;
   });
-  calcularTotalCompra();
+  
   
   const total = JSON.parse(sessionStorage.getItem('total'));
   verCarrito.innerHTML = `${aux}
