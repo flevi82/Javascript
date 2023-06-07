@@ -44,10 +44,7 @@ else if (validar === false){
     registro.innerHTML=`<a class="btn btn-dark" href="./pages/clientes.html" role="button">Registrate</a>`;
     
 }
-else {
-  finalizandoCompra.innerHTML =  
-    `<a class="btn btn-gradient-1" href="./pages/clientes.html" role="button">Registrate</a>`
-};
+
 
 function buscarDni (){
     const numero = document.getElementById('dniControl').value;
@@ -59,7 +56,7 @@ function buscarDni (){
         boton.reset();
     }
     else {
-        alert ("Cliente no encontrado");
+      Swal.fire('Any fool can use a computer')
     }
 
 }
@@ -113,6 +110,8 @@ const verCarrito = document.getElementById('verCarrito');
 let carrito = JSON.parse(sessionStorage.getItem('chequeo'));
 if (carrito === null){
   carrito = [];
+  actualizarCarrito();
+  
 }else{
   actualizarCarrito();
 }
@@ -155,9 +154,9 @@ function actualizarCarrito() {
   
   
   const total = JSON.parse(sessionStorage.getItem('total'));
-  verCarrito.innerHTML = `${aux}
-  <h3 class="dropdown-header-title font-weight-bold">Total del carrito :$${total}</h3> 
-  <a class="btn btn-gradient-1" href="./pages/checkout.html" role="button">Finalizá tu compra</a>`   
+  verCarrito.innerHTML = `${aux}<br>
+  <h3 class="dropdown-header-title font-weight-bold">Total del carrito :$${total}</h3>
+  <a class="btn btn-gradient-1 d-flex justify-content-center" href="./pages/checkout.html" role="button">Finalizá tu compra</a><br>`   
     
 }
 }
