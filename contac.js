@@ -81,19 +81,24 @@ function buscarDni (){
 
 // -------------carrito---------------
 
-let mostrarPedido = document.getElementById('mostrarPedido');
-const total = JSON.parse(sessionStorage.getItem('total'));
-const carrito = JSON.parse(sessionStorage.getItem('chequeo'));
 const verCarrito = document.getElementById('verCarrito');
+let carrito = JSON.parse(sessionStorage.getItem('chequeo'));
+if (carrito === null){
+  carrito = [];
+}else{
+  actualizarCarrito();
+}
 
-contenedorCarrito.addEventListener('click', actualizarCarrito);
+let mostrarPedido = document.getElementById('mostrarPedido');
+
+
 
 function actualizarCarrito() {
   let aux = '<h3 class="dropdown-header-title font-weight-bold">Carrito de Compras</h3>';
   carrito.forEach((producto) => {
     aux += `  
               <div class="card col-sm-9 d-flex">
-                  <img src="img/${producto.id}.png" class="card-img-top img-fluid py-3">
+                  <img src="../img/${producto.id}.png" class="card-img-top img-fluid py-3">
                   <div class="card-body justify-content-center">
                       <h4 class="card-title"> ${producto.nombre} </h4>
                       <p class="card-title"> Cantidad: ${producto.cantidad} </p>
@@ -104,11 +109,10 @@ function actualizarCarrito() {
               
               `;
   });
-  calcularTotalCompra();
   const total = JSON.parse(sessionStorage.getItem('total'));
   verCarrito.innerHTML = `${aux} 
   '<h3 class="dropdown-header-title font-weight-bold">Total del carrito :$${total}</h3>;
-  <a class="btn btn-dark" href="./pages/checkout.html" role="button">Finalizá tu compra</a>`
+  <a class="btn btn-gradient-1" href="./pages/checkout.html" role="button">Finalizá tu compra</a>`
 }
 
 const eliminarDelCarrito = (id) => {
