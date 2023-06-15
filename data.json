@@ -1,0 +1,6 @@
+[
+    {"nombre": "Martin","apellido": "Guzman","dni":"11.111.111", "email":"m.guzman@gmail.com","direccion":"Av.Rivadavia 5283 L3"},
+    {"nombre": "Sergio","apellido": "Massa", "dni":"22.222.222","email":"s.massa@gmail.com","direccion":"Av. San Nicolas 1785"},
+    {"nombre": "Silvina","apellido": "Batakis", "dni":"33.333.333","email":"s.batakis@gmail.com","direccion":"Condarco 1666 1B"},
+    {"nombre": "Daniel","apellido": "Scioli", "dni":"44.444.444","email":"d.scioli@gmail.com","direccion":"Honorio Pueyrredon 1020 piso 11"}
+]

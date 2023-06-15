@@ -31,7 +31,7 @@
             <div id="registro"></div>
             <form class="form-inline d-flex flex-nowrap"  id="formularioBoton">
               <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary " type="submit" id="button-addon1" onclick="location.reload()">Buscar</button>
+                <button class="btn btn-outline-secondary " type="submit" id="button-addon1">Buscar</button>
               </div>
               <input type="text" class="form-control" id="dniControl" placeholder="Ingrese su DNI XX.XXX.XXX" aria-label="Example text with button addon" aria-describedby="button-addon1" style="width:30vh;">
           </form>
@@ -42,15 +42,15 @@
               <a class="nav-link" href="./pages/contacto.html">Contacto</a>
             </li>
             <li class="nav-item-carrito dropdown">
-            <a class="nav-link dropdown-toggle"  href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-              <svg xmlns="http://www.w3.org/2000/svg" id="carrito" width="20" height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 20 20">
-                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-              </svg>
-            </a>
-            <div id="verCarrito" class="dropdown-menu" style="overflow-y:auto; max-height:80vh">
-              <div id="finalizandoCompra"></div>
-            </div>
-          </li>
+              <a class="nav-link dropdown-toggle "  href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" id="carrito" width="20" height="20" fill="currentColor" class="bi bi-bag" viewBox="0 0 20 20">
+                  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                </svg>
+              </a>
+              <div id="verCarrito" class="dropdown-menu" style="overflow-y:auto; max-height:80vh">
+                <div id="finalizandoCompra"></div>
+              </div>
+            </li>
           </ul>
         </div>
       </nav>
@@ -164,9 +164,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
- <script>
-    AOS.init();
- </script>
+    <script>AOS.init();</script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  <script src="./main.js"></script>
 </body>
 </html>

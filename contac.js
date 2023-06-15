@@ -112,7 +112,7 @@ function actualizarCarrito() {
   const total = JSON.parse(sessionStorage.getItem('total'));
   verCarrito.innerHTML = `${aux} 
   '<h3 class="dropdown-header-title font-weight-bold">Total del carrito :$${total}</h3>;
-  <a class="btn btn-gradient-1" href="./pages/checkout.html" role="button">Finalizá tu compra</a>`
+  <a class="btn btn-gradient-1" href="./checkout.html" role="button">Finalizá tu compra</a>`
 }
 
 const eliminarDelCarrito = (id) => {

@@ -1,3 +1,14 @@
+const traerClientes = async () => {
+  const response = await fetch ("./data.json");
+  const data = await response.json();
+  return data;
+
+}
+
+let data = traerClientes ();
+
+
+
 let clientes = JSON.parse(localStorage.getItem('clientes'));
 
 if (clientes ===null){
@@ -11,12 +22,26 @@ if (clientes ===null){
 
 sessionStorage.setItem('clientes', JSON.stringify(clientes));
 
-const boton = document.getElementById("formularioBoton");
 
+const boton = document.getElementById("formularioBoton");
 boton.addEventListener('submit', (e) => {
+    const busqueda = async () => {
+    const { value: numero } = await Swal.fire({
+    title: 'Acceso',
+    input: 'text',
+    inputLabel: 'Ingresá tu DNI',
+    inputPlaceholder: 'XX.XXX.XXX'
+  })
+  
+  if (email) {
+    Swal.fire(`Tu DNI: ${numero}`)
+  }
+}
     e.preventDefault();
     buscarDni();
 });
+
+
 
 
 const finalizandoCompra = document.getElementById('finalizandoCompra');
@@ -56,10 +81,15 @@ function buscarDni (){
         boton.reset();
     }
     else {
-      Swal.fire('Any fool can use a computer')
+      Swal.fire({
+        icon: 'warning',
+        title: '¿Quién sos?',
+        text: 'Registrate así te conocemos',
+        footer: '<a href="./pages/clientes.html">Ingresá tus datos aquí</a>'
+      })
     }
-
 }
+
 
 class Producto{
     constructor (id,nombre,precio,tematica,cantidad){
