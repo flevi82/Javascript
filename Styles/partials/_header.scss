@@ -25,6 +25,13 @@
     width: 400px;
 }
 
+#botonera{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
 
 .divisor{
     background-image: url(../img/barra.svg);
@@ -37,4 +44,15 @@
     // z-index: -5;
     
     
+}
+
+
+
+@media only screen and (max-width: 800px){
+
+    #botonera{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 }

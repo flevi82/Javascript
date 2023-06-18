@@ -9,7 +9,8 @@ class Mensaje {
 
 const mensajes = [];
 
-const clientes = JSON.parse(localStorage.getItem('clientes'));
+let clientes = JSON.parse(sessionStorage.getItem('clientes'));
+
 
 const botonContacto = document.getElementById('botonContacto');
 
@@ -30,22 +31,64 @@ function guardarMensaje () {
     enviado.innerText=`Enviado`;
 }
 
+
+// TRAIGO LOS BOTONES DE ACCESO Y REGISTRO
 const boton = document.getElementById("formularioBoton");
+const registrate = document.getElementById("registrate");
 
-
-boton.addEventListener('submit', (e) => {
-    e.preventDefault();
-    buscarDni();
+// PROGRAMACIÓN BOTÓN DE ACCESO
+boton.addEventListener('click', () => {
+   buscaClientes ();
 });
 
+const buscaClientes = async () => {
+    const { value: numero } = await Swal.fire({
+      title: 'Acceso',
+      input: 'text',
+      inputLabel: 'Ingresá tu DNI',
+      inputPlaceholder: 'XX.XXX.XXX'
+    })
+    if (numero == ""){
+      Swal.fire(`Ingresá un valor válido`);
+    }
 
+  // VALIDACIÓN DE CLIENTES
+
+  const encontrados = clientes.some (item => item.dni.includes(numero));
+  sessionStorage.setItem('dnis', JSON.stringify(encontrados));
+  if (encontrados === true){
+    const datos = clientes.find(item=> item.dni.includes(numero));
+    sessionStorage.setItem('datosDniEncontrado', JSON.stringify(datos));
+    Swal.fire(`Hola ${datos.nombre}`).then(function(){ 
+      location.reload();
+      }
+   );
+    }
+  else {
+    Swal.fire({
+      icon: 'warning',
+      title: '¿Quién sos?',
+      text: 'Registrate así te conocemos',
+      footer: '<a href="./pages/clientes.html">Ingresá tus datos aquí</a>'
+      })
+    }
+    
+}
+
+
+const finalizandoCompra = document.getElementById('finalizandoCompra');
 let validar = JSON.parse(sessionStorage.getItem('dnis'));
 if (validar === true) {
     boton.remove();
+    registrate.remove();
     let bienvenida = document.getElementById('bienvenida');
     let datos = JSON.parse(sessionStorage.getItem('datosDniEncontrado'));
-    let cliente = JSON.parse(localStorage.getItem('clientes'))
-    let nombrePersona = JSON.parse(sessionStorage.getItem('nombrePersona'))
+    let cliente = JSON.parse(localStorage.getItem('clientes'));
+    let nombrePersona = JSON.parse(sessionStorage.getItem('nombrePersona'));
+    finalizandoCompra.innerHTML =  
+    `<a class="btn btn-gradient-1" href="./pages/checkout.html" role="button">Finalizá tu compra</a>`
+    let registro = document.getElementById('salir');
+    registro.innerHTML=`<button class="btn btn-warning mr-md-3" id="salida" role="button" style="width:15vh" type="submit">Salir</button>`;
     if (nombrePersona === null){
         bienvenida.innerHTML=`<h5>Hola ${datos.nombre}</h5>`;
         console.log(cliente);
@@ -53,31 +96,17 @@ if (validar === true) {
     else{
     bienvenida.innerHTML=`<h5>Hola ${nombrePersona}</h5>`;
     console.log(cliente);
-}
-}
-else if (validar === false){
-    boton.remove();
-    let registro = document.getElementById('registro');
-    registro.innerHTML=`<a class="btn btn-dark" href="./clientes.html" role="button">Registrate</a>
-    `;
-
-};
-
-function buscarDni (){
-    const numero = document.getElementById('dniControl').value;
-    const encontrados = clientes.some (item => item.dni.includes(numero));
-    if (encontrados === true){
-        sessionStorage.setItem('dnis', JSON.stringify(encontrados));
-        const datos = clientes.find(item=> item.dni.includes(numero));
-        sessionStorage.setItem('datosDniEncontrado', JSON.stringify(datos));
-        boton.reset();
     }
-    else {
-        sessionStorage.setItem('dnis', JSON.stringify(encontrados));
-        alert ("Cliente no encontrado");
-    }
-
 }
+
+// CONFIGURACIÓN DE LOG OUT
+const salida = document.getElementById("salida");
+salida.addEventListener('click', () => {
+  salida.remove();
+  sessionStorage.removeItem('dnis');
+  sessionStorage.removeItem('datosDniEncontrados');
+  location.reload();
+});
 
 // -------------carrito---------------
 

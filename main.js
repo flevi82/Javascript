@@ -1,59 +1,69 @@
-const traerClientes = async () => {
-  const response = await fetch ("./data.json");
-  const data = await response.json();
-  return data;
-
-}
-
-let data = traerClientes ();
 
 
-
-let clientes = JSON.parse(localStorage.getItem('clientes'));
-
-if (clientes ===null){
-  clientes = [
-    {nombre: "Martin",apellido: "Guzman",dni:"11.111.111", email:"m.guzman@gmail.com",direccion:"Av.Rivadavia 5283 L3"},
-    {nombre: "Sergio",apellido: "Massa", dni:"22.222.222",email:"s.massa@gmail.com",direccion:"Av. San Nicolas 1785"},
-    {nombre: "Silvina",apellido: "Batakis", dni:"33.333.333",email:"s.batakis@gmail.com",direccion:"Condarco 1666 1B"},
-    {nombre: "Daniel",apellido: "Scioli", dni:"44.444.444",email:"d.scioli@gmail.com",direccion:"Honorio Pueyrredon 1020 piso 11"},
-];
-}
-
-sessionStorage.setItem('clientes', JSON.stringify(clientes));
+let clientes;
+fetch ("./data.json")
+  .then((response) => response.json())
+  .then((data) => {clientes = data
+    sessionStorage.setItem('clientes', JSON.stringify(clientes));
+  });
 
 
+// TRAIGO LOS BOTONES DE ACCESO Y REGISTRO
 const boton = document.getElementById("formularioBoton");
-boton.addEventListener('submit', (e) => {
-    const busqueda = async () => {
-    const { value: numero } = await Swal.fire({
+const registrate = document.getElementById("registrate");
+
+// PROGRAMACIÓN BOTÓN DE ACCESO
+boton.addEventListener('click', () => {
+   buscaClientes ();
+});
+
+const buscaClientes = async () => {
+  const { value: numero } = await Swal.fire({
     title: 'Acceso',
     input: 'text',
     inputLabel: 'Ingresá tu DNI',
     inputPlaceholder: 'XX.XXX.XXX'
   })
-  
-  if (email) {
-    Swal.fire(`Tu DNI: ${numero}`)
+  if (numero == ""){
+    Swal.fire(`Ingresá un valor válido`);
   }
+
+  // VALIDACIÓN DE CLIENTES
+
+  const encontrados = clientes.some (item => item.dni.includes(numero));
+  sessionStorage.setItem('dnis', JSON.stringify(encontrados));
+  if (encontrados === true){
+    const datos = clientes.find(item=> item.dni.includes(numero));
+    sessionStorage.setItem('datosDniEncontrado', JSON.stringify(datos));
+    Swal.fire(`Hola ${datos.nombre}`).then(function(){ 
+      location.reload();
+      }
+   );
+    }
+  else {
+    Swal.fire({
+      icon: 'warning',
+      title: '¿Quién sos?',
+      text: 'Registrate así te conocemos',
+      footer: '<a href="./pages/clientes.html">Ingresá tus datos aquí</a>'
+      })
+    }
 }
-    e.preventDefault();
-    buscarDni();
-});
-
-
 
 
 const finalizandoCompra = document.getElementById('finalizandoCompra');
 let validar = JSON.parse(sessionStorage.getItem('dnis'));
 if (validar === true) {
     boton.remove();
+    registrate.remove();
     let bienvenida = document.getElementById('bienvenida');
     let datos = JSON.parse(sessionStorage.getItem('datosDniEncontrado'));
-    let cliente = JSON.parse(localStorage.getItem('clientes'));
+    let cliente = JSON.parse(sessionStorage.getItem('clientes'));
     let nombrePersona = JSON.parse(sessionStorage.getItem('nombrePersona'));
     finalizandoCompra.innerHTML =  
     `<a class="btn btn-gradient-1" href="./pages/checkout.html" role="button">Finalizá tu compra</a>`
+    let registro = document.getElementById('salir');
+    registro.innerHTML=`<button class="btn btn-warning mr-md-3" id="salida" role="button" style="width:15vh" type="submit">Salir</button>`;
     if (nombrePersona === null){
         bienvenida.innerHTML=`<h5>Hola ${datos.nombre}</h5>`;
         console.log(cliente);
@@ -63,32 +73,19 @@ if (validar === true) {
     console.log(cliente);
     }
 }
-else if (validar === false){
-    boton.remove();
-    let registro = document.getElementById('registro');
-    registro.innerHTML=`<a class="btn btn-dark" href="./pages/clientes.html" role="button">Registrate</a>`;
-    
+
+// CONFIGURACIÓN DE LOG OUT
+const salir = () => {
+  salida.remove();
+  sessionStorage.removeItem('dnis');
+  sessionStorage.removeItem('datosDniEncontrados');
+  location.reload();
 }
 
-
-function buscarDni (){
-    const numero = document.getElementById('dniControl').value;
-    const encontrados = clientes.some (item => item.dni.includes(numero));
-    sessionStorage.setItem('dnis', JSON.stringify(encontrados));
-    if (encontrados === true){
-        const datos = clientes.find(item=> item.dni.includes(numero));
-        sessionStorage.setItem('datosDniEncontrado', JSON.stringify(datos));
-        boton.reset();
-    }
-    else {
-      Swal.fire({
-        icon: 'warning',
-        title: '¿Quién sos?',
-        text: 'Registrate así te conocemos',
-        footer: '<a href="./pages/clientes.html">Ingresá tus datos aquí</a>'
-      })
-    }
-}
+const salida = document.getElementById("salida");
+salida.addEventListener('click', () => {
+  salir();
+});
 
 
 class Producto{
@@ -101,10 +98,10 @@ class Producto{
     }
 }
 
-const prod1 = new Producto ("1","Set Figuras", 1000, "Semántica",1);
-const prod2 = new Producto ("2","La mudanza", 2000, "Semantica",1);
-const prod3 = new Producto ("3","Morfosintático Select", 3000, "Morfosintaxis",1);
-const prod4 = new Producto ("4","Kit Morfosintáctico", 4000, "Morfosintaxis",1);
+const prod1 = new Producto (1,"Set Figuras", 1000, "Semántica",1);
+const prod2 = new Producto (2,"La mudanza", 2000, "Semantica",1);
+const prod3 = new Producto (3,"Morfosintático Select", 3000, "Morfosintaxis",1);
+const prod4 = new Producto (4,"Kit Morfosintáctico", 4000, "Morfosintaxis",1);
 
 const productos = [prod1,prod2,prod3,prod4];
 
@@ -127,23 +124,30 @@ carri4.addEventListener('click', () => {
   });
 
 class Carrito{
-    constructor (nroPedido, descripcion, cliente, envio, total){
+    constructor (nroPedido, descripcion,  envio, total){
         this.nroPedido = nroPedido;
         this.descripcion = descripcion;
-        this.cliente = cliente;
         this.envio = envio;
         this.total = total;
     }
 }
 
+const calcularTotalCompra = () => {
+  let total = 0;
+  carrito.forEach((producto) => {
+    total += producto.precio * producto.cantidad;
+  });
+
+  sessionStorage.setItem('total',JSON.stringify(total));
+};
+
 const verCarrito = document.getElementById('verCarrito');
 let carrito = JSON.parse(sessionStorage.getItem('chequeo'));
 if (carrito === null){
   carrito = [];
-  actualizarCarrito();
   
 }else{
-  actualizarCarrito();
+  carrito = JSON.parse(sessionStorage.getItem('chequeo'));
 }
 
 const agregarAlCarrito = (id) => {
@@ -155,7 +159,6 @@ const agregarAlCarrito = (id) => {
       carrito.push(producto);
     }
   actualizarCarrito();
-  calcularTotalCompra();
   sessionStorage.setItem("chequeo",JSON.stringify(carrito))
   };
 
@@ -177,36 +180,38 @@ function actualizarCarrito() {
               <h4 class="card-title"> ${producto.nombre} </h4>
               <p class="card-title"> Cantidad: ${producto.cantidad} </p>
               <p class="card-text"> Precio: $${producto.precio} </p>
+              <p class="card-text"> ID: ${producto.id} </p>
               <button onClick = "eliminarDelCarrito(${producto.id})" class="btn btn-primary"> Eliminar del Carrito </button>
             </div>
           </div>`;
   });
-  
-  
+
+  calcularTotalCompra();
   const total = JSON.parse(sessionStorage.getItem('total'));
   verCarrito.innerHTML = `${aux}<br>
   <h3 class="dropdown-header-title font-weight-bold">Total del carrito :$${total}</h3>
   <a class="btn btn-gradient-1 d-flex justify-content-center" href="./pages/checkout.html" role="button">Finalizá tu compra</a><br>`   
-    
+  sessionStorage.setItem("chequeo",JSON.stringify(carrito));
+  cambioCarrito();
 }
 }
 
 
 const eliminarDelCarrito = (id) => {
   const producto = carrito.find((producto) => producto.id === id);
-  carrito.splice(carrito.indexOf(producto), 1);
+  if (producto.cantidad > 1){
+    producto.cantidad--;
+  }else{
+    carrito.splice(carrito.indexOf(producto), 1);
+  }
+  calcularTotalCompra();
   actualizarCarrito();
+  sessionStorage.setItem("chequeo",JSON.stringify(carrito))
 };
 
 
 
-const calcularTotalCompra = () => {
-  let total = 0;
-  carrito.forEach((producto) => {
-    total += producto.precio * producto.cantidad;
-  });
-  sessionStorage.setItem('total',JSON.stringify(total));
-};
+
 
 
 

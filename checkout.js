@@ -3,7 +3,7 @@ let mostrarPedido = document.getElementById('mostrarPedido');
 let mostrarCliente = document.getElementById('mostrarCliente');
 let mostrarTotal = document.getElementById('mostrarTotal');
 let clientes = JSON.parse(sessionStorage.getItem('datosDniEncontrado'));
-let cliente = JSON.parse(localStorage.getItem('clientes'));
+let cliente = JSON.parse(sessionStorage.getItem('clientes'));
 if (clientes === null){
     let nombrePersona = "Visitante";
     bienvenida.innerHTML=`<h5>Hola ${nombrePersona}</h5>`;

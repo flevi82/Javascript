@@ -10,24 +10,24 @@ class Cliente{
 }
 
 
-const clientes = JSON.parse(sessionStorage.getItem('clientes'));
-
-
+let clientes = JSON.parse(sessionStorage.getItem('clientes'));
 const formulario = document.getElementById('formulario');
+const nuevosCliente = document.getElementById('nuevoCliente');
 
-formulario.addEventListener('submit', (e) => {
+nuevosCliente.addEventListener('click', (e) => {
   e.preventDefault();
   nuevoCliente();
 });
 
 
-function nuevoCliente() {
+const nuevoCliente = async () => {
     let nombre = document.getElementById('nombre').value;
     const apellido = document.getElementById('apellido').value;
     const dni = document.getElementById('dni').value;
     const email = document.getElementById('email').value;
     const direccion = document.getElementById('direccion').value;
     const clienteNuevo = new Cliente(nombre,apellido,dni,email,direccion);
+
     const encontrados = clientes.some (item => item.dni.includes(dni));
     const encontrados1 = clientes.find(item => item.dni.includes(dni));
     if (encontrados===true){
@@ -37,14 +37,16 @@ function nuevoCliente() {
         formulario.reset();
         nombre = clientes[(clientes.length-1)].nombre
         sessionStorage.setItem('datosDniEncontrado', JSON.stringify(encontrados1));
+        
     }
     else{
         clientes.push(clienteNuevo);
         console.log(clientes);
         sessionStorage.setItem('datosDniEncontrado', JSON.stringify(clientes[clientes.length-1]));
+        sessionStorage.setItem('clientes', JSON.stringify(clientes));
     }
 
-    localStorage.setItem('clientes', JSON.stringify(clientes));
+    
     sessionStorage.setItem('nombrePersona', JSON.stringify(nombre));
     sessionStorage.setItem('dnis', JSON.stringify(true));
     
